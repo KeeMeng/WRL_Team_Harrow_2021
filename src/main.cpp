@@ -28,14 +28,14 @@ float delta_x = 0;
 float delta_y = 0;
 int default_speed_percentage = 25;
 
-void delta_location(float current_x,float current_y,float target_x,float target_y){
+void delta_location(float current_x,float current_y,float target_x,float target_y) {
   //call it to update the delta values
   delta_x = target_x - current_x;
   delta_y = target_y - current_y;
 }
 
 
-void Drive_xy(float delta_x,float delta_y,float power_setting, float timeout){
+void Drive_xy(float delta_x,float delta_y,float power_setting, float timeout) {
   // delta_x in cm
   // delta_y in cm
   // power_setting in percent
@@ -59,8 +59,8 @@ void Drive_xy(float delta_x,float delta_y,float power_setting, float timeout){
   HDrive_motor.setTimeout(timeout,seconds);
 
   //calc turns
-  float forward_turns = delta_y/((2*3.1415*5)); //devide target distance by diameter of wheel, then * cartage ratio
-  float sideway_turns = delta_x/((2*3.1415*5)); //devide target distance by diameter of wheel, then * cartage ratio
+  float forward_turns = delta_y/((2*3.14159265358979323846*5)); //devide target distance by diameter of wheel, then * cartage ratio
+  float sideway_turns = delta_x/((2*3.14159265358979323846*5)); //devide target distance by diameter of wheel, then * cartage ratio
 
   //turn motors
   LeftMotor.spinFor(forward,forward_turns,turns,false); //false = do not hold the programme here, so the other wheel will spin at the same time too
