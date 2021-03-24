@@ -19,6 +19,21 @@
 
 using namespace vex;
 
+//global vars
+float current_robot_pos_x = 0;
+float current_robot_pos_y = 0;
+float current_target_pos_x = 0;
+float current_target_pos_y = 0;
+float delta_x = 0;
+float delta_y = 0;
+int default_speed_percentage = 25;
+
+void delta_location(float current_x,float current_y,float target_x,float target_y){
+  //call it to update the delta values
+  delta_x = target_x - current_x;
+  delta_y = target_y - current_y;
+}
+
 
 void Drive_xy(float delta_x,float delta_y,float power_setting, float timeout){
   // delta_x in cm
@@ -46,7 +61,8 @@ void Drive_xy(float delta_x,float delta_y,float power_setting, float timeout){
 
   //turn motors
   LeftMotor.spinFor(forward,forward_turns,turns,false); //false = do not hold the programme here, so the other wheel will spin at the same time too
-  RightMotor.spinFor(forward,forward_turns,turns,false); //does not hold
+  RightMotor.spinFor(forward,forward_turns,turns,true); //holds
+  //the reason why it is not ran as async is because it is quite wobbly and unstable to go both sideways and straight at the same time, and it is also not needed in this comp
   HDrive_motor.spinFor(forward,sideway_turns,turns,true); //holds programme here
 
 }
@@ -55,7 +71,16 @@ int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
-  Drive_xy(50,50,100,0);
-  vex::task::sleep( 10000 );
+  //Drive_xy(50,50,25,0);
+  while (true){
+    
+    Drive_xy(50,0,25,0);
+    Drive_xy(-50,0,25,0);
+    Drive_xy(0,-50,25,0);
+    Drive_xy(0,50,25,0);
+    
+  }
+
+  //vex::task::sleep( 10000 );
   
 }
