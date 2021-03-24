@@ -52,8 +52,11 @@ void Drive_xy(float delta_x,float delta_y,float power_setting, float timeout){
 
   //set motor speed
   LeftMotor.setVelocity(power_setting,percent);
+  LeftMotor.setTimeout(timeout,seconds);
   RightMotor.setVelocity(power_setting,percent);
+  RightMotor.setTimeout(timeout,seconds);
   HDrive_motor.setVelocity(power_setting,percent);
+  HDrive_motor.setTimeout(timeout,seconds);
 
   //calc turns
   float forward_turns = delta_y/((2*3.1415*5)); //devide target distance by diameter of wheel, then * cartage ratio
@@ -74,10 +77,10 @@ int main() {
   //Drive_xy(50,50,25,0);
   while (true){
     
-    Drive_xy(50,0,25,0);
-    Drive_xy(-50,0,25,0);
-    Drive_xy(0,-50,25,0);
-    Drive_xy(0,50,25,0);
+    Drive_xy(50,0,25,1);
+    Drive_xy(-50,0,25,1);
+    Drive_xy(0,-50,25,1);
+    Drive_xy(0,50,25,1);
     
   }
 
