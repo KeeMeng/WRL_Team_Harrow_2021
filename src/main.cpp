@@ -33,13 +33,21 @@ void Drive_xy(float delta_x,float delta_y,float power_setting, float timeout){
   //the motors are red cartarage, and the degrees thing needs to take that into account
 
   //diameter of wheels are around 10cm
-  float forward_turns = delta_y/((2*3.1415*5)); //devide target distance by diameter of wheel, then * cartage ratio
-  Brain.Screen.print(forward_turns);
-  LeftMotor.spinFor(forward,forward_turns,turns,false); //false = do not hold the programme here, so the other wheel will spin at the same time too
-  RightMotor.spinFor(forward,forward_turns,turns,true); 
 
-  //@Kee Ming can you please help implement the sideways motion too? It can happen at the same time. So the sideways motor spin should be true, and the right motor and left motor should be false. Thanks
-  //Also the timeout and Power % if you have time. Thanks! 
+
+  //set motor speed
+  LeftMotor.setVelocity(power_setting,percent);
+  RightMotor.setVelocity(power_setting,percent);
+  HDrive_motor.setVelocity(power_setting,percent);
+
+  //calc turns
+  float forward_turns = delta_y/((2*3.1415*5)); //devide target distance by diameter of wheel, then * cartage ratio
+  float sideway_turns = delta_x/((2*3.1415*5)); //devide target distance by diameter of wheel, then * cartage ratio
+
+  //turn motors
+  LeftMotor.spinFor(forward,forward_turns,turns,false); //false = do not hold the programme here, so the other wheel will spin at the same time too
+  RightMotor.spinFor(forward,forward_turns,turns,false); //does not hold
+  HDrive_motor.spinFor(forward,sideway_turns,turns,true); //holds programme here
 
 }
 
