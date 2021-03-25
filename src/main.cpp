@@ -52,15 +52,17 @@ void Drive_xy(float delta_x,float delta_y,float power_setting, float timeout) {
 
   //set motor speed
   LeftMotor.setVelocity(power_setting,percent);
-  LeftMotor.setTimeout(timeout,seconds);
   RightMotor.setVelocity(power_setting,percent);
-  RightMotor.setTimeout(timeout,seconds);
   HDrive_motor.setVelocity(power_setting,percent);
+
+  //set timeout
+  LeftMotor.setTimeout(timeout,seconds);
+  RightMotor.setTimeout(timeout,seconds);
   HDrive_motor.setTimeout(timeout,seconds);
 
   //calc turns
-  float forward_turns = delta_y/((2*3.14159265358979323846*5)); //devide target distance by diameter of wheel, then * cartage ratio
-  float sideway_turns = delta_x/((2*3.14159265358979323846*5)); //devide target distance by diameter of wheel, then * cartage ratio
+  float forward_turns = delta_y/((2*3.14159265358979323846*5)); //divide target distance by diameter of wheel, then * cartage ratio
+  float sideway_turns = delta_x/((2*3.14159265358979323846*5)); //divide target distance by diameter of wheel, then * cartage ratio
 
   //turn motors
   LeftMotor.spinFor(forward,forward_turns,turns,false); //false = do not hold the programme here, so the other wheel will spin at the same time too
@@ -75,7 +77,7 @@ int main() {
   vexcodeInit();
 
   //Drive_xy(50,50,25,0);
-  while (true){
+  while (true) {
     
     Drive_xy(50,0,25,1);
     Drive_xy(-50,0,25,1);
