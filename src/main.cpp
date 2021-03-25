@@ -84,14 +84,24 @@ int main() {
   vexcodeInit();
 
   //Drive_xy(50,50,25,0);
-  while (true) {
-    
-    Drive_xy(50,0,25,1);
-    Drive_xy(-50,0,25,1);
-    Drive_xy(0,-50,25,1);
-    Drive_xy(0,50,25,1);
+  int counter = 0;
+  while (counter < 4) {
+    // Test L shape
+    // Drive_xy(50,0,25,1);
+    // Drive_xy(-50,0,25,1);
+    // Drive_xy(0,-50,25,1);
+    // Drive_xy(0,50,25,1);
+    // Movebelt(100,50,1);
+    // Movebelt(-100,50,1);
+
+    Drive_xy(50,50,50,1);
+    Drive_xy(50,0,50,1);
     Movebelt(100,50,1);
-    Movebelt(100,-50,1);
+    Drive_xy(50,0,50,1);
+    Movebelt(-100,50,1);
+    Drive_xy(-100,50,50,1);
+
+    counter++;
     
   }
 
