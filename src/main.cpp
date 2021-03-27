@@ -74,13 +74,17 @@ int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
-  //Drive_xy(50,50,25,0);
+  //Drive_xy(0,50,25,0);
+
+  //LeftMotor.spinFor(forward,1,turns,false);
+  //RightMotor.spinFor(forward,1,turns,false);
   while (true){
     
-    Drive_xy(50,0,25,1);
-    Drive_xy(-50,0,25,1);
-    Drive_xy(0,-50,25,1);
-    Drive_xy(0,50,25,1);
+    //Drive_xy(50,0,25,1);
+    //Drive_xy(-50,0,25,1);
+    Drive_xy(0,-50,25,10);
+    vex::task::sleep( 1000 );
+    Drive_xy(0,50,25,10);
     
   }
 
