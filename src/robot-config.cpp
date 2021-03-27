@@ -11,6 +11,7 @@ brain  Brain;
 motor LeftMotor = motor(PORT1, ratio36_1, false);
 motor RightMotor = motor(PORT2, ratio36_1, false);
 motor HDrive_motor = motor(PORT11, ratio36_1, true);
+motor ArmMotor = motor(PORT3, ratio36_1, false);
 
 // VEXcode generated functions
 
@@ -18,7 +19,7 @@ motor HDrive_motor = motor(PORT11, ratio36_1, true);
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
- * 
+ *
  * This should be called at the start of your int main function.
  */
 void vexcodeInit( void ) {
