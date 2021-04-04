@@ -123,13 +123,23 @@ void throw_out(){
   Movebelt(10,50);
 }
 
+void turn_one_side(int degrees, int power_percentage){
+
+  //set motor speed
+  LeftMotor.setVelocity(power_percentage,percent);
+  RightMotor.setVelocity(power_percentage,percent);
+
+  float calc_ed_turn = (26*3.1415*degrees/360)/(10*3.1415);
+  RightMotor.spinFor(forward,calc_ed_turn,turns,false);
+  LeftMotor.spinFor(forward,-calc_ed_turn,turns,true);
+}
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
   //push_h_area();
-  throw_out();
-
+  //throw_out();
+  turn_one_side(90,20);
   // // xdrive(20);
   // ydrive(30);
   // // xdrive(-20);
