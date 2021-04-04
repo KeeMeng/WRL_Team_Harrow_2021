@@ -11,6 +11,9 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // BeltMotor            motor         8               
+// LeftMotor            motor         10              
+// RightMotor           motor         1               
+// HMotor               motor         5               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -32,12 +35,11 @@ using namespace vex;
 //   delta_y = target_y - current_y;
 // }
 
-// void Movebelt(float rotate, float power_setting, float timeout) {
-//   BeltMotor.setVelocity(power_setting,percent);
-//   BeltMotor.setTimeout(timeout,seconds);
-//   BeltMotor.spinFor(forward,rotate,turns,true);
-
-// }
+void Movebelt(float rotate, int power_setting=12) {
+  BeltMotor.setVelocity(power_setting,percent);
+  BeltMotor.setTimeout(20,seconds);
+  BeltMotor.spinFor(forward,rotate,turns,true);
+}
 
 // void Drive_xy(float delta_x,float delta_y,float power_setting, float timeout) {
 //   // delta_x in cm
@@ -73,31 +75,73 @@ using namespace vex;
 
 // }
 
-// void Normal_drive(int distance, float timeout, int power_setting=25){
+//Normal drive
+void ydrive(int distance,int power_percentage = 25,int timeout=5) {
 
-//   //set motor speed
-//   LeftMotor.setVelocity(power_setting,percent);
-//   RightMotor.setVelocity(power_setting,percent);
+  //set motor speed
+  LeftMotor.setVelocity(power_percentage,percent);
+  RightMotor.setVelocity(power_percentage,percent);
 
-//   //set timeout
-//   LeftMotor.setTimeout(timeout,seconds);
-//   RightMotor.setTimeout(timeout,seconds);
+  //set timeout
+  LeftMotor.setTimeout(timeout,seconds);
+  RightMotor.setTimeout(timeout,seconds);
 
-//   float forward_turns = distance/((2*3.14159265358979323846*5)); //divide target distance by diameter of wheel, then * cartage ratio
-//   //turn motors
-//   LeftMotor.spinFor(forward,forward_turns,turns,false); //false = do not hold the programme here, so the other wheel will spin at the same time too
-//   RightMotor.spinFor(forward,forward_turns,turns,true); //holds
+  float forward_turns = distance/((2*3.14159265358979323846*5)); //divide target distance by diameter of wheel, then * cartage ratio
+  //turn motors
+  LeftMotor.spinFor(forward,forward_turns,turns,false); //false = do not hold the programme here, so the other wheel will spin at the same time too
+  RightMotor.spinFor(forward,forward_turns,turns,true); //holds
     
-//   }
+}
+
+// Hdrive/sideways
+void xdrive(int distance) {
+
+  //set motor speed and timeout
+  HMotor.setVelocity(15,percent);
+  HMotor.setTimeout(5,seconds);
+
+  float sideways_turns = distance/((2*3.14159265358979323846*5)); //divide target distance by diameter of wheel, then * cartage ratio
+
+  HMotor.spinFor(forward,sideways_turns,turns,true);
+}
+
+void pick_up_the_cube() {
+  BeltMotor.setVelocity(12,percent);
+  BeltMotor.setTimeout(5,seconds);
+  BeltMotor.spinFor(forward,5,turns,false);
+  ydrive(3,5);
+}
+
+void push_h_area() {
+  Movebelt(-3,20);
+  ydrive(10,5,10);
+  Movebelt(-2,100);
+  ydrive(-10,15);
+}
+
+void throw_out(){
+  Movebelt(10,50);
+}
 
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
+  //push_h_area();
+  throw_out();
 
-  
+  // // xdrive(20);
+  // ydrive(30);
+  // // xdrive(-20);
+  // // ydrive(-20);
 
+  // Movebelt(0.6);
 
+  // ydrive(-10);
+  // xdrive(27);
+  // ydrive(10);
+
+  // Movebelt(5);
 
 
 
