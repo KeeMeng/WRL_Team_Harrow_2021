@@ -216,7 +216,15 @@ int main() {
   RightMotor.spinFor(reverse,8,degrees);
   ydrive(11);
   pick_up_the_cube();
-  ydrive(-11);
+
+
+  // release cubes
+
+  xdrive(20);
+  ydrive(10);
+  throw_out();
+  xdrive(-30);
+  ydrive(-60);
 
 
 
