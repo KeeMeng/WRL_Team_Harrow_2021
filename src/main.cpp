@@ -10,10 +10,10 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// BeltMotor            motor         8               
-// LeftMotor            motor         10              
-// RightMotor           motor         1               
-// HMotor               motor         5               
+// BeltMotor            motor         7               
+// LeftMotor            motor         8               
+// RightMotor           motor         10              
+// HMotor               motor         9               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -76,7 +76,7 @@ void Movebelt(float rotate, int power_setting=12) {
 // }
 
 //Normal drive
-void ydrive(int distance,int power_percentage = 25,int timeout=5) {
+void ydrive(float distance,int power_percentage = 25,int timeout=5) {
 
   //set motor speed
   LeftMotor.setVelocity(power_percentage,percent);
@@ -94,10 +94,10 @@ void ydrive(int distance,int power_percentage = 25,int timeout=5) {
 }
 
 // Hdrive/sideways
-void xdrive(int distance) {
+void xdrive(float distance) {
 
   //set motor speed and timeout
-  HMotor.setVelocity(15,percent);
+  HMotor.setVelocity(35,percent);
   HMotor.setTimeout(5,seconds);
 
   float sideways_turns = distance/((2*3.14159265358979323846*5)); //divide target distance by diameter of wheel, then * cartage ratio
@@ -106,10 +106,13 @@ void xdrive(int distance) {
 }
 
 void pick_up_the_cube() {
-  BeltMotor.setVelocity(12,percent);
+  BeltMotor.setVelocity(20,percent);
   BeltMotor.setTimeout(5,seconds);
-  BeltMotor.spinFor(forward,5,turns,false);
-  ydrive(3,5);
+  BeltMotor.spinFor(forward,1,turns,true);
+  // BeltMotor.spinFor(forward,1,turns,false);
+  // ydrive(2.5);
+  // wait(4, seconds);
+  // ydrive(-2);
 }
 
 void push_h_area() {
@@ -120,10 +123,10 @@ void push_h_area() {
 }
 
 void throw_out(){
-  Movebelt(10,50);
+  Movebelt(8,50);
 }
 
-void turn_one_side(int degrees, int power_percentage){
+void turn_one_side(int degrees, int power_percentage=25){
 
   //set motor speed
   LeftMotor.setVelocity(power_percentage,percent);
@@ -136,10 +139,87 @@ void turn_one_side(int degrees, int power_percentage){
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
+  LeftMotor.setStopping(brake);
+  RightMotor.setStopping(brake);
+  HMotor.setStopping(brake);
+
+  // Move out from base to h blocks
+  xdrive(16.8);
+  ydrive(51.8);
+  RightMotor.spinFor(reverse,4,degrees);
+  pick_up_the_cube();
+
+  // Pick up other h blocks
+
+  ydrive(-41.3);
+  wait(5, msec);
+  xdrive(38.3);
+  wait(5, msec);
+  RightMotor.spinFor(reverse,6,degrees);
+  ydrive(40);
+  wait(5, msec);
+  pick_up_the_cube();
+
+  ydrive(-43.1);
+  wait(5, msec);
+  xdrive(38.6);
+  wait(5, msec);
+  RightMotor.spinFor(reverse,7,degrees);
+  ydrive(40);
+  wait(5, msec);
+  pick_up_the_cube();
+
+
+  ydrive(-4.2);
+
+  turn_one_side(-64);
+
+  ydrive(22.2);
+
+  pick_up_the_cube();
+
+  ydrive(-22.2);
+
+  turn_one_side(64);
+
+
+
+  // release h cubes
+
+  ydrive(-27.2);
+  throw_out();
+  
+
+  // s blocks
+
+  xdrive(24);
+  ydrive(30);
+
+  pick_up_the_cube();
+
+  ydrive(-40);
+  xdrive(-38.5);
+  ydrive(40);
+  pick_up_the_cube();
+  ydrive(-40);
+
+  xdrive(-38.5);
+  ydrive(40);
+  pick_up_the_cube();
+  ydrive(-40);
+
+  xdrive(-38.5);
+  ydrive(40);
+  pick_up_the_cube();
+  ydrive(-40);
+
+
+
+
 
   //push_h_area();
   //throw_out();
-  turn_one_side(90,20);
+  // turn_one_side(90,20);
   // // xdrive(20);
   // ydrive(30);
   // // xdrive(-20);
@@ -168,7 +248,7 @@ int main() {
 
   // Drivetrain.driveFor(forward,1000,mm);
 
-
+  
 
 
 

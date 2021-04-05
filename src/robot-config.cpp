@@ -8,10 +8,10 @@ using code = vision::code;
 brain  Brain;
 
 // VEXcode device constructors
-motor BeltMotor = motor(PORT8, ratio36_1, true);
-motor LeftMotor = motor(PORT10, ratio36_1, false);
-motor RightMotor = motor(PORT1, ratio36_1, true);
-motor HMotor = motor(PORT5, ratio36_1, true);
+motor BeltMotor = motor(PORT7, ratio36_1, true);
+motor LeftMotor = motor(PORT8, ratio36_1, false);
+motor RightMotor = motor(PORT10, ratio36_1, true);
+motor HMotor = motor(PORT9, ratio36_1, true);
 
 // VEXcode generated functions
 
