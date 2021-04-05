@@ -123,7 +123,7 @@ void push_h_area() {
 }
 
 void throw_out(){
-  Movebelt(8,50);
+  Movebelt(-8,20);
 }
 
 void turn_one_side(int degrees, int power_percentage=25){
@@ -145,73 +145,78 @@ int main() {
 
   // Move out from base to h blocks
   xdrive(16.8);
-  ydrive(51.8);
-  RightMotor.spinFor(reverse,4,degrees);
+  ydrive(51.9);
+  RightMotor.spinFor(reverse,8,degrees);
   pick_up_the_cube();
 
   // Pick up other h blocks
 
-  ydrive(-41.3);
+  ydrive(-11.9);
   wait(5, msec);
-  xdrive(38.3);
+  xdrive(38.8);
   wait(5, msec);
-  RightMotor.spinFor(reverse,6,degrees);
-  ydrive(40);
-  wait(5, msec);
-  pick_up_the_cube();
-
-  ydrive(-43.1);
-  wait(5, msec);
-  xdrive(38.6);
-  wait(5, msec);
-  RightMotor.spinFor(reverse,7,degrees);
-  ydrive(40);
+  RightMotor.spinFor(reverse,9,degrees);
+  ydrive(10.7);
   wait(5, msec);
   pick_up_the_cube();
 
+  ydrive(-13.5);
+  wait(5, msec);
+  xdrive(38.7);
+  wait(5, msec);
+  RightMotor.spinFor(reverse,10,degrees);
+  ydrive(10.7);
+  wait(5, msec);
+  pick_up_the_cube();
 
-  ydrive(-4.2);
 
+  ydrive(-3.9);
   turn_one_side(-64);
-
   ydrive(22.2);
-
   pick_up_the_cube();
-
   ydrive(-22.2);
-
   turn_one_side(64);
 
 
 
-  // release h cubes
+  // release h cubes to the end
 
-  ydrive(-27.2);
+  ydrive(-30);
+  turn_one_side(180);
   throw_out();
+  ydrive(-10);
+  turn_one_side(177);
   
 
   // s blocks
 
-  xdrive(24);
-  ydrive(30);
+  xdrive(27);
+  ydrive(22);
 
   pick_up_the_cube();
 
-  ydrive(-40);
-  xdrive(-38.5);
-  ydrive(40);
-  pick_up_the_cube();
-  ydrive(-40);
+  ydrive(-10);
 
-  xdrive(-38.5);
-  ydrive(40);
+  xdrive(-39.2);
+  wait(5, msec);
+  RightMotor.spinFor(reverse,6,degrees);
+  ydrive(11);
   pick_up_the_cube();
-  ydrive(-40);
+  ydrive(-11);
 
-  xdrive(-38.5);
-  ydrive(40);
+  xdrive(-39.2);
+  wait(5, msec);
+  RightMotor.spinFor(reverse,7,degrees);
+  ydrive(11);
   pick_up_the_cube();
-  ydrive(-40);
+  ydrive(-11);
+
+  xdrive(-39.2);
+  wait(5, msec);
+  RightMotor.spinFor(reverse,8,degrees);
+  ydrive(11);
+  pick_up_the_cube();
+  ydrive(-11);
 
 
 
