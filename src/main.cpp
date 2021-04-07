@@ -143,88 +143,121 @@ int main() {
   RightMotor.setStopping(brake);
   HMotor.setStopping(brake);
 
-  // Move out from base to h blocks
-  xdrive(16.8);
-  ydrive(51.9);
-  RightMotor.spinFor(reverse,8,degrees);
+
+  // Take s blocks
+  xdrive(6);
+  ydrive(52.0);
   pick_up_the_cube();
 
-  // Pick up other h blocks
-
-  ydrive(-11.9);
-  wait(5, msec);
-  xdrive(38.8);
-  wait(5, msec);
-  RightMotor.spinFor(reverse,9,degrees);
-  ydrive(10.7);
-  wait(5, msec);
+  ydrive(-15);
+  xdrive(39.9);
+  ydrive(14.8);
   pick_up_the_cube();
 
-  ydrive(-13.5);
-  wait(5, msec);
-  xdrive(38.7);
-  wait(5, msec);
-  RightMotor.spinFor(reverse,10,degrees);
-  ydrive(10.7);
-  wait(5, msec);
+  ydrive(-15);
+  xdrive(39.9);
+  ydrive(14.8);
   pick_up_the_cube();
 
-
-  ydrive(-3.9);
-  turn_one_side(-64);
-  ydrive(22.2);
-  pick_up_the_cube();
-  ydrive(-22.2);
-  turn_one_side(64);
-
-
-
-  // release h cubes to the end
-
-  ydrive(-30);
-  turn_one_side(180);
-  throw_out();
-  ydrive(-10);
-  turn_one_side(177);
   
 
-  // s blocks
-
-  xdrive(27);
-  ydrive(22);
-
-  pick_up_the_cube();
-
-  ydrive(-10);
-
-  xdrive(-39.2);
-  wait(5, msec);
-  RightMotor.spinFor(reverse,6,degrees);
-  ydrive(11);
-  pick_up_the_cube();
-  ydrive(-11);
-
-  xdrive(-39.2);
-  wait(5, msec);
-  RightMotor.spinFor(reverse,7,degrees);
-  ydrive(11);
-  pick_up_the_cube();
-  ydrive(-11);
-
-  xdrive(-39.2);
-  wait(5, msec);
-  RightMotor.spinFor(reverse,8,degrees);
-  ydrive(11);
-  pick_up_the_cube();
 
 
-  // release cubes
 
-  xdrive(20);
-  ydrive(10);
-  throw_out();
-  xdrive(-30);
-  ydrive(-60);
+
+
+
+
+  // // Move out from base to h blocks
+  // xdrive(16.8);
+  // ydrive(51.9);
+  // RightMotor.spinFor(reverse,8,degrees);
+  // pick_up_the_cube();
+
+  // // Pick up other h blocks
+
+  // ydrive(-11.9);
+  // wait(5, msec);
+  // xdrive(40.1);
+  // wait(5, msec);
+  // RightMotor.spinFor(reverse,9,degrees);
+  // ydrive(10.7);
+  // wait(5, msec);
+  // pick_up_the_cube();
+
+  // ydrive(-13.5);
+  // wait(5, msec);
+  // xdrive(37.5);
+  // wait(5, msec);
+  // RightMotor.spinFor(reverse,10,degrees);
+  // ydrive(10.7);
+  // wait(5, msec);
+  // pick_up_the_cube();
+
+
+  // ydrive(-4.5);
+  // turn_one_side(-64);
+  // ydrive(22.2);
+  // pick_up_the_cube();
+  // ydrive(-22.2);
+  // turn_one_side(64);
+
+
+
+  // // release h cubes to the end
+
+  // ydrive(-30);
+  // turn_one_side(180);
+  // throw_out();
+  // ydrive(-10);
+  // turn_one_side(176);
+  
+
+  // // s blocks
+
+  // xdrive(27);
+  // ydrive(22);
+
+  // pick_up_the_cube();
+
+  // ydrive(-10);
+
+  // xdrive(-39.2);
+  // wait(5, msec);
+  // RightMotor.spinFor(reverse,6,degrees);
+  // ydrive(11);
+  // pick_up_the_cube();
+  // ydrive(-11);
+
+  // xdrive(-39.2);
+  // wait(5, msec);
+  // RightMotor.spinFor(reverse,7,degrees);
+  // ydrive(11);
+  // pick_up_the_cube();
+  // ydrive(-11);
+
+  // xdrive(-39.2);
+  // wait(5, msec);
+  // RightMotor.spinFor(reverse,8,degrees);
+  // ydrive(11);
+  // pick_up_the_cube();
+
+
+  // // release cubes
+
+  // xdrive(20);
+  // ydrive(10);
+  // throw_out();
+  // xdrive(-30);
+  // ydrive(-60);
+
+
+
+
+
+
+
+
 
 
 
