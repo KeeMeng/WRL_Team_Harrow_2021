@@ -97,7 +97,7 @@ void ydrive(float distance,int power_percentage = 25,int timeout=5) {
 void xdrive(float distance) {
 
   //set motor speed and timeout
-  HMotor.setVelocity(35,percent);
+  HMotor.setVelocity(25,percent);
   HMotor.setTimeout(5,seconds);
 
   float sideways_turns = distance/((2*3.14159265358979323846*5)); //divide target distance by diameter of wheel, then * cartage ratio
@@ -108,7 +108,7 @@ void xdrive(float distance) {
 void pick_up_the_cube() {
   BeltMotor.setVelocity(20,percent);
   BeltMotor.setTimeout(5,seconds);
-  BeltMotor.spinFor(forward,1,turns,true);
+  BeltMotor.spinFor(forward,2,turns,true);
   // BeltMotor.spinFor(forward,1,turns,false);
   // ydrive(2.5);
   // wait(4, seconds);
@@ -116,9 +116,9 @@ void pick_up_the_cube() {
 }
 
 void push_h_area() {
-  Movebelt(-3,20);
+  // Movebelt(-3,20);
   ydrive(10,5,10);
-  Movebelt(-2,100);
+  Movebelt(-3,100);
   ydrive(-10,15);
 }
 
@@ -145,22 +145,38 @@ int main() {
 
 
   // Take s blocks
-  xdrive(6);
-  ydrive(52.0);
+  xdrive(7);
+  ydrive(55.0);
   pick_up_the_cube();
 
   ydrive(-15);
   xdrive(39.9);
-  ydrive(14.8);
+  ydrive(14.6);
   pick_up_the_cube();
 
-  ydrive(-15);
-  xdrive(39.9);
-  ydrive(14.8);
+  ydrive(-15);  
+  xdrive(38.9);
+  ydrive(14.6);
   pick_up_the_cube();
 
-  
+  ydrive(-25);
+  turn_one_side(-49);
+  ydrive(27);
+  pick_up_the_cube();
+  ydrive(-25);
+  turn_one_side(49);
 
+  // Push s cubes
+
+  xdrive(11);
+  ydrive(15);
+
+  push_h_area();
+
+  ydrive(-20);
+
+
+  // Collect h cubes
 
 
 
